@@ -116,9 +116,12 @@ public final class Flex {
      This property controls dynamically if a flexbox's UIView is included or not in the flexbox layouting. When a
      flexbox's UIView is excluded, FlexLayout won't layout the view and its children views.
     */
-    public var isIncludedInLayout: Bool = true {
-        didSet {
-            yoga.isIncludedInLayout = isIncludedInLayout
+    public var isIncludedInLayout: Bool {
+        get {
+            return yoga.isIncludedInLayout
+        }
+        set {
+            yoga.isIncludedInLayout = newValue
         }
     }
     
@@ -307,7 +310,7 @@ public final class Flex {
      A shrink value of 0 keeps the view's size in the main-axis direction. Note that this may cause the view to 
      overflow its flex container.
     
-     - Parameter value: Default value is 1
+     - Parameter value: Default value is 0
     */
     @discardableResult
     public func shrink(_ value: CGFloat) -> Flex {
@@ -327,6 +330,19 @@ public final class Flex {
     @discardableResult
     public func basis(_ value: CGFloat?) -> Flex {
         yoga.flexBasis = valueOrAuto(value)
+        return self
+    }
+
+    /**
+     This property takes the same values as the width and height properties, and specifies the initial size of the
+     flex item, before free space is distributed according to the grow and shrink factors.
+    
+     Specifying `nil` set the basis as `auto`, which means the length is equal to the length of the item. If the 
+     item has no length specified, the length will be according to its content.
+    */
+    @discardableResult
+    public func basis(_ percent: FPercent) -> Flex {
+        yoga.flexBasis = YGValue(value: Float(percent.value), unit: .percent)
         return self
     }
 

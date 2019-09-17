@@ -7,6 +7,30 @@
 
 # Change Log
 
+## [1.3.16](https://github.com/layoutBox/FlexLayout/releases/tag/1.3.16)
+Released on 2019-08-03
+
+* Delegate isIncludedInLayout to yoga vs using default value:  
+Previously the value of `isIncludedInLayout` may have not reflect what the underlying yoga value is as the developer may have manipulated the yoga value directly. This could potentially leave the Flex initial value out of sync. This change defers the get/set of this property to yoga.
+    * Added by [Dan Loman](https://github.com/namolnad) in Pull Request [#131](https://github.com/layoutBox/FlexLayout/pull/137) 
+
+
+## [1.3.15](https://github.com/layoutBox/FlexLayout/releases/tag/1.3.15)
+Released on 2019-06-07
+
+* Fix public extension warning
+    * Added by [Levi McCallum](https://github.com/levi) in Pull Request [#131](https://github.com/layoutBox/FlexLayout/pull/131) 
+* Update to Swift 4.2
+* Update cocoapods to 1.7
+
+## [1.3.14](https://github.com/layoutBox/FlexLayout/releases/tag/1.3.14)
+Released on 2019-05-17
+
+Add method: 
+* `basis(_ : FPercent)`: This method is similar to `basis(_ : CGFloat?)` but takes a percentage parameter.
+
+* Added by [Andreas Mattsson](https://github.com/AndreasMattsson) in Pull Request [#128](https://github.com/layoutBox/FlexLayout/pull/128) 
+
 ## [1.3.11](https://github.com/layoutBox/FlexLayout/releases/tag/1.3.10)
 Released on 2018-08-09 
 
